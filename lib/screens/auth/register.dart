@@ -20,17 +20,6 @@ class _RegisterState extends State<Register> {
   Widget build(BuildContext context) {
     return loading ? Loading() : Scaffold(
       backgroundColor: Colors.white,
-      appBar: AppBar(
-        backgroundColor: Colors.grey,
-        elevation: 0.0,
-        title: Text('SINGIUP'),
-        actions: <Widget>[
-          FlatButton.icon(
-            onPressed: (){widget.toggleView();},
-            icon: Icon(Icons.person),
-            label: Text('Singin'),)
-        ],
-      ),
       body: Container(
           padding: EdgeInsets.symmetric(vertical: 20, horizontal: 50),
           child: Form(
@@ -38,16 +27,26 @@ class _RegisterState extends State<Register> {
             child: ListView(
               children: <Widget>[
                 SizedBox(height: 50),
+                Text('Введите email'),
                 TextFormField(
-                  decoration: textImputDecorations.copyWith(hintText:'Email'),
+               //  decoration: InputDecoration(
+               //      border: OutlineInputBorder(
+               //          borderRadius:BorderRadius.circular(30.0)),
+               //      hintText:'email'
+               //  ),
                   validator: (val)=>val.isEmpty?'Enter Email':null,
                   onChanged: (val) {
                     setState(() => email = val);
                   },
                 ),
                 SizedBox(height: 50),
+                Text('Введите пароль'),
                 TextFormField(
-                    decoration: textImputDecorations.copyWith(hintText:'Password'),
+                  // decoration: InputDecoration(
+                  //     border: OutlineInputBorder(
+                  //         borderRadius:BorderRadius.circular(30.0)),
+                  //     hintText:'Password'
+                  // ),
                     validator: (val)=>val.length<6?'password 6+ sym':null,
                     obscureText: true,
                     onChanged: (val) {
@@ -55,10 +54,10 @@ class _RegisterState extends State<Register> {
                     }
                 ),
                 SizedBox(height: 50),
-                RaisedButton(
-                    color: Colors.pink[400],
+                FloatingActionButton(
+                    shape: RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(30.0))),
                     child: Text(
-                        'SINGUP',
+                        'Зарегистрироватся',
                         style: TextStyle(color: Colors.white)
                     ),
                     onPressed: () async {
@@ -69,7 +68,7 @@ class _RegisterState extends State<Register> {
 
                           setState((){
                             loading = false;
-                            error = 'register if u hnt got acc';
+                            error = 'Введите правильное мыло и пароль не меньше 6 символов';
                           });
                         }
                       }

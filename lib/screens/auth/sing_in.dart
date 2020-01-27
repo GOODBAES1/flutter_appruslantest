@@ -32,10 +32,10 @@ class _SingInState extends State<SingIn> {
         child: Form(
           key: _formKey,
           child: ListView(
-            padding: EdgeInsets.fromLTRB(50,0,50,0),
+            padding: EdgeInsets.fromLTRB(20,20,20,0),
 
              children: <Widget>[
-               SizedBox(height: 25),
+               SizedBox(height: 40),
                SizedBox(
                  width: 300,
                  height: 280,
@@ -103,10 +103,11 @@ class _SingInState extends State<SingIn> {
               SizedBox(height: 10),
               Text(error,style: TextStyle(color: Colors.red)),
 
-                 FlatButton.icon(
-                   onPressed: (){widget.toggleView();},
-                   icon: Icon(Icons.person),
-                   label: Text('Singin'),)
+                 FlatButton(
+                   onPressed: () {
+                     Navigator.of(context).pushNamed('/register');
+                     },
+                   child: Text('Регистрация')),
             ],
           ),
         )
