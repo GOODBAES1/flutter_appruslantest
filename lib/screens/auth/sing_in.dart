@@ -35,9 +35,10 @@ class _SingInState extends State<SingIn> {
             padding: EdgeInsets.fromLTRB(50,0,50,0),
 
              children: <Widget>[
+               SizedBox(height: 25),
                SizedBox(
                  width: 300,
-                 height: 300,
+                 height: 280,
                  child: Image(image: AssetImage('assets/vector.png')),),
                Text(
                  'Добро пожаловать!',
@@ -53,7 +54,7 @@ class _SingInState extends State<SingIn> {
                  overflow: TextOverflow.ellipsis,
                  style: TextStyle(fontSize: 16,fontFamily: 'Roboto'),
                ),
-              SizedBox(height: 10),
+              SizedBox(height: 25),
               TextFormField(
                 decoration: InputDecoration(
 
@@ -101,6 +102,11 @@ class _SingInState extends State<SingIn> {
               ),
               SizedBox(height: 10),
               Text(error,style: TextStyle(color: Colors.red)),
+
+                 FlatButton.icon(
+                   onPressed: (){widget.toggleView();},
+                   icon: Icon(Icons.person),
+                   label: Text('Singin'),)
             ],
           ),
         )
