@@ -4,14 +4,7 @@ import 'package:flutter_appruslantest/service/authServise.dart';
 import 'package:flutter_appruslantest/constants.dart';
 import 'package:flutter_appruslantest/spinkit.dart';
 import 'package:flutter_appruslantest/screens/auth/sing_in.dart';
-
-class noauth extends StatefulWidget {
-  final Function toggleView;
-  noauth ({this.toggleView});
-  @override
-  _noauthState createState() => _noauthState();
-}
-
+import 'package:flutter_appruslantest/router.dart' as router;
 final _formKey = GlobalKey<FormState>();
 final AuthService _auth = AuthService();
 bool loading = false;
@@ -19,28 +12,27 @@ String email = '';
 String password = '';
 String error = '';
 
-class _noauthState extends State<noauth> {
+class Noauth extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return loading ? Loading(): Scaffold(
+    return Scaffold(
       backgroundColor: Colors.white,
       body: Container(
-
           child: Form(
             key: _formKey,
             child: ListView(
-                padding: EdgeInsets.fromLTRB(50,0,50,0),
+                padding: EdgeInsets.fromLTRB(20,20,20,0),
 
                 children: <Widget>[
-                SizedBox(height: 25),
+                SizedBox(height: 40),
             SizedBox(
               width: 300,
               height: 280,
               child: Image(image: AssetImage('assets/vector.png')),),
+                  SizedBox(height: 40),
             Text(
               'Добро пожаловать!',
               textAlign: TextAlign.center,
-              overflow: TextOverflow.ellipsis,
               style: TextStyle(fontWeight: FontWeight.bold, fontSize: 30,fontFamily: 'Roboto'),
             ),
             SizedBox(height: 10),
@@ -60,14 +52,16 @@ class _noauthState extends State<noauth> {
                     style: TextStyle(color: Colors.white, fontFamily: 'Roboto', fontSize: 16, fontWeight: FontWeight.bold )
                 ),
                 onPressed:()  {
-                  Register();
+                  Navigator.of(context).pushNamed('/register');
                 }
             ),
             SizedBox(height: 10),
             Text(error,style: TextStyle(color: Colors.red)),
-                  InkWell(
-                    child: Text("Hello"),
-                    onTap: () {Register();},
+                  FlatButton(
+                    child: Text('Есть аккаунт? Вход'),
+                    onPressed: () {
+                      Navigator.of(context).pushNamed('/signin');
+                    },
                   )
               ],
             ),
